@@ -1,0 +1,9 @@
+# text files get normalized to LF in the repo
+* text=auto
+
+# force LF specifically for known code files
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.py text eol=lf
