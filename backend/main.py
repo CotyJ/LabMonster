@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 from timeline import timeline_generator
+from executor import Executor
 
 origins = [
     "http://localhost",
@@ -25,6 +26,7 @@ async def root():
 @app.post("/push-button")
 async def push_button(request: Request):
     data = await request.json()
-    return timeline_generator(data)
-
-    return "Backend Success!"
+    timeline = timeline_generator(data)
+    executor = Executor(timeline)
+    executor.run()
+    return {"status": "executed", "frames": len(timeline)}
