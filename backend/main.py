@@ -1,7 +1,8 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-
 app = FastAPI()
+
+from timeline import timeline_generator
 
 origins = [
     "http://localhost",
@@ -25,10 +26,6 @@ async def root():
 async def push_button(request: Request):
     data = await request.json()
     actions = data.get("actions", [])
-    for action in actions:
-        print(action)
-    return "Backend Success!"
+    timeline_generator(actions)
 
-if __name__ == "__main__":
-    print("~ ~ ~ Main ~ ~ ~ ")
-    # uvicorn.run(app, host="0.0.0.0", port=8000, access_log=False)
+    return "Backend Success!"
