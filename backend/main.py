@@ -25,7 +25,6 @@ async def root():
 @app.post("/push-button")
 async def push_button(request: Request):
     data = await request.json()
-    actions = data.get("actions", [])
-    timeline_generator(actions)
+    return timeline_generator(data)
 
     return "Backend Success!"
