@@ -30,3 +30,15 @@ __pycache__/
 *.pyd
 .venv/
 venv/
+
+
+# Visual Studio / C++ build artifacts
+.vs/
+x64/
+*.exe
+*.ilk
+*.idb
+*.pdb
+*.tlog/
+*.obj
+*.lib
